@@ -35,6 +35,8 @@ def initialize_voxels():
 def draw_nyaa_cat():
     cat_head(12, 3, 3)
     cat_body(0, 3, 0)
+    cat_legs(0, 0, 0)
+    cat_tail(0, 0, 0)
     return
 
 
@@ -125,11 +127,30 @@ def cat_body(base_x, base_y, base_z: int):
     draw_rect(base_x + 6, base_y + 6, base_z + 1, 1, 1, COLOR_MAGENTA, 1)
     draw_rect(base_x + 10, base_y + 5, base_z + 1, 1, 1, COLOR_MAGENTA, 1)
     draw_rect(base_x + 9, base_y + 8, base_z + 1, 1, 1, COLOR_MAGENTA, 1)
-    draw_rect(base_x + 4, base_y + 14, base_z + 1, 1, 1, COLOR_MAGENTA, 1)
-    draw_rect(base_x + 9, base_y + 15, base_z + 1, 1, 1, COLOR_MAGENTA, 1)
-    draw_rect(base_x + 9, base_y + 11, base_z + 1, 1, 1, COLOR_MAGENTA, 1)
-    draw_rect(base_x + 12, base_y + 15, base_z + 1, 1, 1, COLOR_MAGENTA, 1)
-    draw_rect(base_x + 16, base_y + 13, base_z + 1, 1, 1, COLOR_MAGENTA, 1)
+    draw_rect(base_x + 4, base_y + 13, base_z + 1, 1, 1, COLOR_MAGENTA, 1)
+    draw_rect(base_x + 9, base_y + 14, base_z + 1, 1, 1, COLOR_MAGENTA, 1)
+    draw_rect(base_x + 9, base_y + 10, base_z + 1, 1, 1, COLOR_MAGENTA, 1)
+    draw_rect(base_x + 12, base_y + 14, base_z + 1, 1, 1, COLOR_MAGENTA, 1)
+    draw_rect(base_x + 16, base_y + 12, base_z + 1, 1, 1, COLOR_MAGENTA, 1)
+    return
+
+
+@ti.func
+def cat_legs(base_x, base_y, base_z: int):
+    return
+
+
+@ti.func
+def cat_tail(base_x, base_y, base_z: int):
+    draw_rect(base_x - 6, base_y + 8, base_z - 1, 4, 3, COLOR_BLACK, 1)
+    draw_rect(base_x - 5, base_y + 7, base_z - 1, 4, 3, COLOR_BLACK, 1)
+    draw_rect(base_x - 4, base_y + 6, base_z - 1, 4, 3, COLOR_BLACK, 1)
+    draw_rect(base_x - 3, base_y + 5, base_z - 1, 4, 3, COLOR_BLACK, 1)
+    draw_rect(base_x - 1, base_y + 4, base_z - 1, 4, 3, COLOR_BLACK, 1)
+    draw_rect(base_x - 5, base_y + 9, base_z - 1, 2, 1, COLOR_GRAY, 1)
+    draw_rect(base_x - 4, base_y + 8, base_z - 1, 2, 1, COLOR_GRAY, 1)
+    draw_rect(base_x - 3, base_y + 7, base_z - 1, 2, 1, COLOR_GRAY, 1)
+    draw_rect(base_x - 2, base_y + 6, base_z - 1, 2, 1, COLOR_GRAY, 1)
     return
 
 
