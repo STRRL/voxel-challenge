@@ -3,7 +3,7 @@ import taichi as ti
 from taichi.math import *
 
 scene = Scene()
-scene.set_floor(-0.05, vec3(1, 1, 1))
+# scene.set_floor(-0.05, vec3(1, 1, 1))
 scene.set_background_color((1, 1, 1))
 scene.set_directional_light((1, 1, 1), 0.1, (0.8, 0.8, 0.8))
 
@@ -33,10 +33,10 @@ def initialize_voxels():
 
 @ti.func
 def draw_nyaa_cat():
-    cat_head(12, 3, 3)
+    cat_head(12, 4, 2)
     cat_body(0, 3, 0)
-    cat_legs(0, 0, 0)
-    cat_tail(0, 0, 0)
+    cat_legs(0, 3, 0)
+    cat_tail(0, 3, 0)
     return
 
 
@@ -137,6 +137,31 @@ def cat_body(base_x, base_y, base_z: int):
 
 @ti.func
 def cat_legs(base_x, base_y, base_z: int):
+    # left 1 behind right
+    # base
+    draw_rect(base_x - 3, base_y - 2, base_z + 1, 5, 4, COLOR_GRAY, 1)
+    # border
+    draw_rect(base_x - 3, base_y - 2, base_z + 1, 4, 1, COLOR_BLACK, 1)
+    draw_rect(base_x - 3, base_y - 2, base_z + 1, 1, 3, COLOR_BLACK, 1)
+    draw_rect(base_x + 1, base_y - 2, base_z + 1, 2, 2, COLOR_BLACK, 1)
+    draw_rect(base_x - 3, base_y + 1, base_z + 1, 5, 1, COLOR_BLACK, 1)
+    draw_rect(base_x + 2, base_y - 1, base_z + 1, 1, 3, COLOR_BLACK, 1)
+    # prune
+    draw_rect(base_x - 3, base_y + 1, base_z + 1, 1, 1, COLOR_BLACK, 0)
+    draw_rect(base_x + 2, base_y + 1, base_z + 1, 1, 1, COLOR_BLACK, 0)
+    draw_rect(base_x + 2, base_y - 2, base_z + 1, 1, 1, COLOR_BLACK, 0)
+    # left 2 behind left
+    draw_rect(base_x + 4, base_y - 2, base_z - 1, 4, 3, COLOR_BLACK, 1)
+    draw_rect(base_x + 5, base_y - 1, base_z - 1, 2, 1, COLOR_GRAY, 1)
+    # left 3 front left
+    draw_rect(base_x + 13, base_y - 2, base_z - 1, 4, 3, COLOR_BLACK, 1)
+    draw_rect(base_x + 14, base_y - 1, base_z - 1, 2, 1, COLOR_GRAY, 1)
+    draw_rect(base_x + 13, base_y - 2, base_z - 1, 1, 1, COLOR_BLACK, 0)
+    # left 4 front right
+    draw_rect(base_x + 18, base_y - 2, base_z + 1, 4, 3, COLOR_BLACK, 1)
+    draw_rect(base_x + 19, base_y - 1, base_z + 1, 2, 1, COLOR_GRAY, 1)
+    draw_rect(base_x + 18, base_y - 2, base_z + 1, 1, 1, COLOR_BLACK, 0)
+    draw_rect(base_x + 21, base_y - 2, base_z + 1, 1, 1, COLOR_BLACK, 0)
     return
 
 
