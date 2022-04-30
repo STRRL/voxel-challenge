@@ -2,11 +2,6 @@ from scene import Scene
 import taichi as ti
 from taichi.math import *
 
-scene = Scene()
-# scene.set_floor(-0.05, vec3(1, 1, 1))
-scene.set_background_color((1, 1, 1))
-scene.set_directional_light((1, 1, 1), 0.1, (0.8, 0.8, 0.8))
-
 # 0f4d8f
 COLOR_BACKGROUND = vec3(15 / 255.0, 77 / 255.0, 143 / 255.0)
 # ffffff
@@ -23,6 +18,23 @@ COLOR_MAGENTA = vec3(1.0, 0.2, 0.6)
 COLOR_BLUSH = vec3(1.0, 0.2, 0.2)
 # ffcc66
 COLOR_CREAM = vec3(1.0, 0.8, 0.4)
+# e7080f
+COLOR_RAINBOW_RED = vec3(231 / 255.0, 8 / 255.0, 15 / 255.0)
+# e7910f
+COLOR_RAINBOW_ORANGE = vec3(231 / 255.0, 145 / 255.0, 15 / 255.0)
+# e7ed0f
+COLOR_RAINBOW_YELLOW = vec3(231 / 255.0, 237 / 255.0, 15 / 255.0)
+# 2fed0f
+COLOR_RAINBOW_GREEN = vec3(47 / 255.0, 237 / 255.0, 15 / 255.0)
+# 0291f4
+COLOR_RAINBOW_BLUE = vec3(2 / 255.0, 29 / 255.0, 244 / 255.0)
+# 5d36f4
+COLOR_RAINBOW_PURPLE = vec3(93 / 255.0, 54 / 255.0, 244 / 255.0)
+
+scene = Scene()
+scene.set_floor(-0.02, COLOR_BACKGROUND)
+scene.set_background_color(COLOR_BACKGROUND)
+scene.set_directional_light((1, 1, 1), 0.1, (0.8, 0.8, 0.8))
 
 
 @ti.kernel
@@ -37,6 +49,7 @@ def draw_nyaa_cat():
     cat_body(0, 3, 0)
     cat_legs(0, 3, 0)
     cat_tail(0, 3, 0)
+    rainbow(2, 5, -2)
     return
 
 
@@ -176,6 +189,28 @@ def cat_tail(base_x, base_y, base_z: int):
     draw_rect(base_x - 4, base_y + 8, base_z - 1, 2, 1, COLOR_GRAY, 1)
     draw_rect(base_x - 3, base_y + 7, base_z - 1, 2, 1, COLOR_GRAY, 1)
     draw_rect(base_x - 2, base_y + 6, base_z - 1, 2, 1, COLOR_GRAY, 1)
+    return
+
+
+@ti.func
+def rainbow(base_x, base_y, base_z: int):
+    rainbow_slice(base_x, base_y, base_z)
+    rainbow_slice(base_x - 5, base_y - 1, base_z)
+    rainbow_slice(base_x - 10, base_y, base_z)
+    rainbow_slice(base_x - 15, base_y - 1, base_z)
+    rainbow_slice(base_x - 20, base_y, base_z)
+    rainbow_slice(base_x - 25, base_y - 1, base_z)
+    return
+
+
+@ti.func
+def rainbow_slice(base_x, base_y, base_z: int):
+    draw_rect(base_x - 5, base_y, base_z, 5, 2, COLOR_RAINBOW_PURPLE, 1)
+    draw_rect(base_x - 5, base_y + 2, base_z, 5, 2, COLOR_RAINBOW_BLUE, 1)
+    draw_rect(base_x - 5, base_y + 4, base_z, 5, 2, COLOR_RAINBOW_GREEN, 1)
+    draw_rect(base_x - 5, base_y + 6, base_z, 5, 2, COLOR_RAINBOW_YELLOW, 1)
+    draw_rect(base_x - 5, base_y + 8, base_z, 5, 2, COLOR_RAINBOW_ORANGE, 1)
+    draw_rect(base_x - 5, base_y + 10, base_z, 5, 2, COLOR_RAINBOW_RED, 1)
     return
 
 
