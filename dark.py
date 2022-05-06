@@ -3,24 +3,23 @@ import taichi as ti
 from taichi.math import *
 
 # nyaacat with dark theme
-# PLEASE DO NOT WRITE EVIL CODES LIKE WHAT I DO
+# PLEASE DO NOT WRITE EVIL CODES LIKE WHAT I DO                                                                                                                         6 # I HAVE NO IDEA ABOUT HOW TO COMPACT THESE LINES OF CODES
 # I HAVE NO IDEA ABOUT HOW TO COMPACT THESE LINES OF CODES
-COLOR_WHITE = vec3(1.0, 1.0, 1.0)
-COLOR_BLACK = vec3(0.0, 0.0, 0.0)
-COLOR_GRAY = vec3(0.2, 0.2, 0.2)
-COLOR_PINK = vec3(170 / 255.0, 102 / 255.0, 170 / 255.0)
-COLOR_MAGENTA = vec3(1.0, 0.2, 0.6)
-COLOR_BLUSH = vec3(1.0, 0.2, 0.2)
-COLOR_CREAM = vec3(1.0, 0.8, 0.4)
-COLOR_RAINBOW_RED = vec3(231 / 255.0, 8 / 255.0, 15 / 255.0)
-COLOR_RAINBOW_ORANGE = vec3(231 / 255.0, 145 / 255.0, 15 / 255.0)
-COLOR_RAINBOW_YELLOW = vec3(231 / 255.0, 237 / 255.0, 15 / 255.0)
-COLOR_RAINBOW_GREEN = vec3(47 / 255.0, 237 / 255.0, 15 / 255.0)
-COLOR_RAINBOW_BLUE = vec3(2 / 255.0, 29 / 255.0, 244 / 255.0)
-COLOR_RAINBOW_PURPLE = vec3(93 / 255.0, 54 / 255.0, 244 / 255.0)
-scene = Scene()
+COLOR_WHITE = vec3(1.0, 1.0, 1.0);
+COLOR_BLACK = vec3(0.0, 0.0, 0.0);
+COLOR_GRAY = vec3(0.2, 0.2, 0.2);
+COLOR_PINK = vec3(170 / 255.0, 102 / 255.0, 170 / 255.0);
+COLOR_MAGENTA = vec3(1.0, 0.2, 0.6);
+COLOR_BLUSH = vec3(1.0, 0.2, 0.2);
+COLOR_CREAM = vec3(1.0, 0.8, 0.4);
+COLOR_RAINBOW_RED = vec3(231 / 255.0, 8 / 255.0, 15 / 255.0);
+COLOR_RAINBOW_ORANGE = vec3(231 / 255.0, 145 / 255.0, 15 / 255.0);
+COLOR_RAINBOW_YELLOW = vec3(231 / 255.0, 237 / 255.0, 15 / 255.0);
+COLOR_RAINBOW_GREEN = vec3(47 / 255.0, 237 / 255.0, 15 / 255.0);
+COLOR_RAINBOW_BLUE = vec3(2 / 255.0, 29 / 255.0, 244 / 255.0);
+COLOR_RAINBOW_PURPLE = vec3(93 / 255.0, 54 / 255.0, 244 / 255.0);
+scene = Scene();
 scene.set_floor(-0.02, vec3(15 / 255.0, 77 / 255.0, 143 / 255.0))
-scene.set_background_color(vec3(15 / 255.0, 77 / 255.0, 143 / 255.0))
 
 directives = [
     [12, 4, 2, 16, 13, COLOR_GRAY, 2], [15, 4, 2, 10, 1, COLOR_BLACK, 2], [13, 6, 2, 1, 1, COLOR_BLACK, 2],
@@ -88,9 +87,10 @@ def draw_rect(left_bottom_x, left_bottom_y, base_z, width, height, color, materi
 
 @ti.kernel
 def initialize_voxels():
-    for i in ti.static(range(100)):
+    ti.loop_config(serialize=True)
+    for i in ti.static(range(136)):
         item = directives[i]
-        draw_rect(item[0], item[2], item[2], item[3], item[4], item[5], item[6])
+        draw_rect(item[0], item[1], item[2], item[3], item[4], item[5], item[6])
 
 
 initialize_voxels()
