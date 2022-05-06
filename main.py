@@ -89,7 +89,8 @@ def draw_rect(left_bottom_x, left_bottom_y, base_z, width, height, color, materi
 
 @ti.kernel
 def initialize_voxels():
-    for i in ti.static(range(100)):
+    ti.loop_config(serialize=True)
+    for i in ti.static(range(136)):
         item = directives[i]
         draw_rect(item[0], item[1], item[2], item[3], item[4], item[5], item[6])
 
