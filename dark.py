@@ -2,7 +2,7 @@ from scene import Scene
 import taichi as ti
 from taichi.math import *
 # nyaacat with dark theme
-# PLEASE TO NOT WRITE EVIL CODES LIKE WHAT I DO
+# PLEASE DO NOT WRITE EVIL CODES LIKE WHAT I DO
 # I HAVE NO IDEA ABOUT HOW TO COMPACT THESE LINES OF CODES
 COLOR_WHITE = vec3(1.0, 1.0, 1.0);COLOR_BLACK = vec3(0.0, 0.0, 0.0);
 COLOR_GRAY = vec3(0.2, 0.2, 0.2);COLOR_PINK = vec3(170 / 255.0, 102 / 255.0, 170 / 255.0);

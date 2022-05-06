@@ -1,7 +1,7 @@
 from scene import Scene
 import taichi as ti
 from taichi.math import *
-# PLEASE TO NOT WRITE EVIL CODES LIKE WHAT I DO
+# PLEASE DO NOT WRITE EVIL CODES LIKE WHAT I DO
 # I HAVE NO IDEA ABOUT HOW TO COMPACT THESE LINES OF CODES
 # see origin.py for the origin codes
 COLOR_WHITE = vec3(1.0, 1.0, 1.0);COLOR_BLACK = vec3(0.0, 0.0, 0.0);
